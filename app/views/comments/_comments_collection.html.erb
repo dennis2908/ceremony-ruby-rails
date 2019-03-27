@@ -1,0 +1,15 @@
+<article class="message">
+  <div class="message-header">
+    <p><strong><%=comment.commenter.username%></strong></p>
+    <%= comment.created_at.strftime("%m/%d/%y at %I:%M%p %Z")%>
+  </div>
+  <div class="message-body">
+    <p><%= comment.content %></p>
+    <br>
+  <% if comment.commenter == current_user %>
+    <%= link_to "Edit Comment", edit_prayer_comment_path(prayer, comment), class: "button is-small is-outlined"%>
+    <%= link_to "Delete Comment", prayer_comment_path(prayer, comment), data: { confirm: "Delete this comment?" }, method: :delete, class: "button is-small is-outlined" %>
+  <% end %>
+</div>
+</article>
+<br>

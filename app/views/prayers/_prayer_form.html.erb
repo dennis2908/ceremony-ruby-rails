@@ -1,0 +1,18 @@
+<%= form_for prayer do |f| %>
+  <%= f.label :overview, "What would you like others to pray about?", :class => "subtitle is-5"%>
+  <%= f.text_field :overview, :class => "input", :placeholder => "What's up? (Brief Overview)" %>
+  <br><br>
+  <%= f.text_area :details, :class => "textarea", :placeholder => "Wanna share more details?"%>
+  <%= f.label :is_anonymous, "Post prayer anonymously?"%>
+  <%= f.check_box :is_anonymous%>
+  <%= f.label :is_public, "Is this a public prayer?"%>
+  <%= f.check_box :is_public %>
+  <br><br>
+  <% if current_user.groups.count > 0 %>
+    <h4 class="title is-4">Post to a group?</h4>
+    <%= f.collection_check_boxes :group_ids, current_user.groups, :id, :name %>
+  <% end %>
+  <br><br>
+  <%= f.submit "Share Prayer", :class => "button is-info" %>
+  <%= link_to "Cancel", prayers_path, :class => "button is-text" %>
+<% end %>

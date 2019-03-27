@@ -1,0 +1,18 @@
+<div class="columns is-centered">
+	<div class="column is-one-half has-text-centered">
+    <div id="bible-prayer">
+      <% if @bible_prayer.is_not_first%>
+        <button id="previous_bible_prayer" data-bible-prayer-id="<%=@bible_prayer.id%>" class="button is-text" style="float:left;">Previous Bible Prayer</button>
+      <% end %>
+      <% if @bible_prayer.is_not_last%>
+        <button id="next_bible_prayer" data-bible-prayer-id="<%=@bible_prayer.id%>" class="button is-text" style="float:right;">Next Bible Prayer</button>
+      <% end %>
+      <br><br>
+      <h1 class="title is-2"><%= @bible_prayer.title%></h1>
+      <h4 class ="subtitle is-4"><%=@bible_prayer.verse%></h4>
+      <h4 class ="subtitle is-6"><%=@bible_prayer.summary%></h4>
+      <div class="column is-one-third is-offset-one-third"><hr></div>
+      <h4 class ="subtitle is-5"><%=simple_format(@bible_prayer.scripture)%></h4>
+    </div>
+  </div>
+</div>

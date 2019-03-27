@@ -1,0 +1,11 @@
+<article class="message">
+  <div class="message-header">
+    <p><strong><%=comment.commenter.username%></strong></p>
+    <%= comment.created_at.strftime("%m/%d/%y at %I:%M%p %Z")%>
+  </div>
+  <div class="message-body">
+    <p><%= comment.content %></p>
+    <br>
+</div>
+</article>
+<br>

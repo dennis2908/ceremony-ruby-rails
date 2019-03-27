@@ -1,0 +1,5 @@
+<%= form_for [prayer, comment] do |f| %>
+  <%= f.hidden_field :prayer_id %>
+  <%= f.text_area :content, class: "textarea", placeholder: "Add a comment" %>
+  <%= f.submit "Send Encouragement", class: "button is-dark" %>
+<% end %>

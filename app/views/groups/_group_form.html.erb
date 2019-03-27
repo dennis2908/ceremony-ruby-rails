@@ -1,0 +1,12 @@
+<%= form_for group do |f| %>
+  <%= f.label :name, "Group Name:", :class => "subtitle is-5" %>
+  <%= f.text_field :name, :class => "input", :placeholder => "*required" %>
+  <br><br>
+  <%= f.label :description, "Description:", :class => "subtitle is-5" %>
+  <%= f.text_area :description, :class => "textarea", :placeholder => "(optional)" %>
+  <%= f.label :is_public, "Is this a public group?" %>
+  <%= f.check_box :is_public %>
+  <br><br>
+  <%= f.submit :class => "button is-info"%>
+  <%= link_to "Cancel", groups_path, :class => "button is-text"%>
+<% end %>

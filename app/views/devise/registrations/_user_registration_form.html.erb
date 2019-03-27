@@ -1,0 +1,15 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render partial: 'user_info', locals:{f: f, type: "text_field", attribute: "username", label: "Username*", c: "input", resource: resource} %>
+  <%= render partial: 'user_info', locals:{f: f, type: "text_field", attribute: "email", label: "Email*", c: "input", resource: resource} %>
+  <%= render partial: 'user_info', locals:{f: f, type: "password_field", attribute: "password", label: "Password* (6 characters minimum)", c: "input", resource: resource} %>
+  <%= render partial: 'user_info', locals:{f: f, type: "password_field", attribute: "password_confirmation", label: "Password confirmation*", c: "input", resource: resource} %>
+  <br>
+  <div class="field">
+    <p class="help">Optional:</p>
+    <%= render partial: 'user_info', locals:{f: f, type: "text_field", attribute: "name", label: "Name", c: "input", resource: resource} %>
+    <%= render partial: 'user_info', locals:{f: f, type: "text_field", attribute: "bio", label: "Bio", c: "input", resource: resource} %>
+    <%= render partial: 'user_info', locals:{f: f, type: "text_field", attribute: "church", label: "Home Church", c: "input", resource: resource} %>
+    <%= render partial: 'user_info', locals:{f: f, type: "text_area", attribute: "verse", label: "Favorite Verse", c: "textarea", resource: resource} %>
+    <%= f.submit :class => "button is-success"%>
+  </div>
+<% end %>

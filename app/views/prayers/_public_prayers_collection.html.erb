@@ -1,0 +1,20 @@
+<a href="/prayers/<%=prayer.id%>">
+	<article class="message is-info">
+		<div class="message-header">
+				<p>
+					<% if prayer.is_anonymous %>
+						<strong>Anonymous - </strong>
+					<% else %>
+						<strong><%=prayer.author.username%> - </strong>
+					<% end %>
+					<em><%=prayer.overview%></em>
+				</p>
+					<%= prayer.created_at.strftime("%m/%d/%y at %I:%M%p %Z")%>
+			</div>
+			<div class="message-body">
+				<p><%=prayer.details%></p>
+		</div>
+	</article>
+</a>
+<%= link_to "#{pluralize(prayer.comments.count, 'comment')}", prayer_comments_path(prayer), class: "button is-small is-text" %>
+<br><br>

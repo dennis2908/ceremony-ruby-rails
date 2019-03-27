@@ -1,0 +1,41 @@
+<h1 class="title is-2 is-spaced"><%=@group.name%></h1>
+<h3 class="subtitle is-5"><%=@group.description%></h3>
+
+<br>
+<hr>
+<h3 class="title is-4">Members: </h3>
+<ul>
+  <% @group.members.each do |user| %>
+    <a href="/users/<%=user.id%>"><li><%=user.username%><%=" (leader)" if user == @group.leader%></li></a>
+  <% end %>
+</ul>
+<br>
+
+<% if policy(@group).leader? %>
+
+  <%= render partial: 'add_member_form', locals: {group: @group} %>
+  
+<% end %>
+
+<br><br>
+<h3 class="title is-4">Group Prayers:</h3>
+<%= render(partial: 'group_prayers', collection: @group.show_prayers(current_user), as: :prayer) || "No public group prayers to display" %>
+
+<br>
+
+<!-- Group administrative buttons -->
+<hr>
+
+<%= render partial: 'admin_buttons', locals: {group: @group} %>
+
+<%# New Comment Form %>
+<hr>
+<%= render partial: 'group_comments/group_comment_form', locals: {group: @group, group_comment: @group_comment} %>
+<br>
+
+<%# Comments Index View %>
+<h1 class="title is-4"><u>Group Comments</u></h1>
+<div id="group_comments">
+<%= render(partial: 'group_comments/group_comments_collection', collection: @group.all_group_comments, as: :comment, locals:{group: @group}) || "No comments have been posted"%>
+</div>
+<br><br>

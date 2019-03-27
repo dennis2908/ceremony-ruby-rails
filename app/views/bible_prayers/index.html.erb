@@ -1,0 +1,13 @@
+<div class="column is-one-half has-text-centered">
+  <h2 class="title is-1">Bible Prayers</h2>
+  <h4 class ="subtitle is-5">
+    Here are some noteable prayers found throughout the Bible. Let these help to guide you in your own prayers
+  </h4>
+  <div class="column is-one-third is-offset-one-third"><hr></div>
+
+  <ul>
+  <% @bible_prayers.each do |prayer| %>
+    <li><%= link_to prayer.title, bible_prayer_path(prayer), class: "subtitle is-4 has-text-info"%></li><br>
+  <% end %>
+  </ul>
+</div>

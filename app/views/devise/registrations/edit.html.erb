@@ -1,0 +1,29 @@
+
+<h1 class="title">Edit Account</h1>
+<p class="subtitle">*required
+
+</p>
+<%= link_to "View public profile", user_path(resource), class: "button is-info is-small", style: "float:right;"%>
+<%= render 'user_registration_form' %>
+
+<%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?\n\nAll shared prayers and lead groups will also be deleted." }, method: :delete, class: "button is-text" %>
+
+<hr>
+<h2 class="title is-3">Prayer Groups</h2>
+<%= render(partial: 'users/user_groups_collection', collection: resource.groups, as: :group) || "You have not joined any groups yet" %>
+<br><br>
+<hr>
+<h2 class="title is-3">Shared Prayers</h2>
+<ul>
+<% resource.prayers.each do |prayer| %>
+  <li><%= link_to prayer.overview, prayer_path(prayer) %></li>
+<% end %>
+</ul>
+<hr>
+<h2 class="title is-3">Commented Prayers</h2>
+<ul>
+<% resource.commented_prayers.each do |prayer| %>
+  <li><%= link_to prayer.overview, prayer_path(prayer) %></li>
+<% end %>
+</ul>
+<br>

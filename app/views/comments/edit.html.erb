@@ -1,0 +1,7 @@
+<h1 class="title is-2">Edit Comment</h1>
+<%= render partial: 'comments/comment_form', locals: {prayer:@prayer, comment: @comment} %>
+
+<br>
+<hr>
+<h3 class="title is-4">Prayer: </h3>
+<%= render partial: 'prayers/public_prayers_collection', locals: {prayer:@prayer} %>

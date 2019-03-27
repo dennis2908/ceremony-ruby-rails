@@ -1,0 +1,11 @@
+<article class="message">
+  <div class="message-header">
+    <p><strong><%=@group_comment.commenter.username%></strong></p>
+    <%= @group_comment.created_at.strftime("%m/%d/%y at %I:%M%p %Z")%>
+  </div>
+  <div class="message-body">
+    <p><%= @group_comment.content %></p>
+    <br>
+</div>
+</article>
+<br>

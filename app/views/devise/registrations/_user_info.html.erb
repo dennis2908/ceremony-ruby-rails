@@ -1,0 +1,7 @@
+<div class="field">
+  <%= f.label attribute.to_sym, label, :class => "label" %>
+  <p class="control">
+    <%= f.send type.to_sym, attribute.to_sym, :class => c %>
+  </p>
+  <p class='error'><%= show_errors(resource, attribute.to_sym) %></p>
+</div>

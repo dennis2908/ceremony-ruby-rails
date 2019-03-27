@@ -1,0 +1,7 @@
+<h1 class="title is-2">Prayer</h1>
+<%= render partial: 'prayers/public_prayers_collection', locals: {prayer:@prayer} %>
+
+<br>
+<hr>
+<h3 class="title is-4">Comments: </h3>
+<%= render(partial: 'comments/comments_collection', collection: @comments, as: :comment, locals:{prayer: @prayer}) || "No comments have been posted"%>

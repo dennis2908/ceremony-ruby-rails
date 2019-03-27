@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prayers</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <title>Prayers</title>
+  </head>
+
+  <body>
+    <%= render 'layouts/navbar'%>
+    <%= render 'layouts/flash_messages'%>
+    <div class="columns">
+      <div class="column is-one-third is-offset-one-third">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

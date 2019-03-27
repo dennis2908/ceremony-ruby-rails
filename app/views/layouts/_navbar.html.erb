@@ -1,0 +1,27 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/home" >
+      <img src="/pray.png" alt="Pray For One Another">
+    </a>
+  </div>
+
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <%= link_to "Prayers", prayers_path, :class => "navbar-item"%>
+      <%= link_to "Groups", groups_path, :class => "navbar-item"%>
+      <%= link_to "Prayers of the Bible", bible_prayers_path, :class => "navbar-item"%>
+    </div>
+
+    <div class="navbar-end">
+      <% if !user_signed_in? %>
+        <%= link_to "Log In", new_user_session_path, :class => "navbar-item"%>
+        <%= link_to "Sign Up", new_user_registration_path, :class => "navbar-item"%>
+      <% else %>
+        <%= link_to "New Prayer Request", new_prayer_path,:class => "button is-info is-rounded is-outlined new_prayer" %>
+        <%= link_to current_user.username, edit_user_registration_path, :class => "navbar-item", :style =>'font-weight: bold;' %>
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "navbar-item" %>
+      <% end %>
+    </div>
+  </div>
+</nav>

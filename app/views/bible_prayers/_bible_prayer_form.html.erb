@@ -1,0 +1,12 @@
+<%= form_for bible_prayer do |f| %>
+  <%= f.label :title, :class => "subtitle is-5"%>
+  <%= f.text_field :title, :class => "input" %><br>
+  <%= f.label :verse %>
+  <%= f.text_field :verse, :class => "input" %><br>
+  <%= f.label :summary %>
+  <%= f.text_area :summary, :class => "textarea" %><br>
+  <%= f.label :scripture %>
+  <%= f.text_area :scripture, :class => "textarea" %><br>
+  <br>
+  <%= f.submit :class => "button is-info" %>
+<% end %>

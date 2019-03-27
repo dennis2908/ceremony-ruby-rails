@@ -1,0 +1,64 @@
+<div class="content">
+  <h1 class="title is-3"><%= @prayer.overview %></h1>
+
+  <% if @prayer.is_anonymous && @prayer.author == current_user%>
+    <p class="subtitle is-6">You posted this anonymously 
+  <% elsif @prayer.is_anonymous %>
+    <p class="subtitle is-6">Posted by Anonymous
+  <% elsif @prayer.author == current_user%>
+    <p class="subtitle is-6">You posted this
+  <% else %>
+    <p class="subtitle is-6">Posted by <a href="/users/<%=@prayer.author.id%>"><%=@prayer.author.username%></a>
+  <% end %>
+
+  on <%= @prayer.created_at.strftime("%m/%d/%y at %I:%M%p %Z")%></p>
+
+  <br>
+
+  <strong>Details:</strong>
+  <div class="box"
+    <h5 class="subtitle is-5"><%= @prayer.details %></h5>
+  </div>
+
+  <br>
+
+  <% if policy(@prayer).author? %>
+    <h5>You shared this in:</h5>
+    
+    <%if @prayer.is_public %>
+      <a href="/prayers">[Public]</a>
+      <br>
+    <% end %>
+
+    <% @prayer.groups.each do |group| %>
+      <%= link_to group.name, group_path(group), :class => "button is-light"%>
+    <% end %>
+
+    <br><br>
+
+    <div class="control">
+      <%= link_to "Edit Prayer", edit_prayer_path(@prayer), class: "button is-info" %>
+      <%= link_to "Delete Prayer", prayer_path(@prayer), data: { confirm: "Delete this prayer?" }, method: :delete, class: "button is-danger" %>
+    </div>
+  <% end %>
+  <br>
+
+</div>
+<%# New Comment Form %>
+<hr>
+<%= render partial: 'comments/comment_form', locals: {prayer:@prayer, comment: @comment} %>
+<br>
+
+
+<%# New AJAX comments %>
+<button id="show_comments" class="button is-light" data-prayer-id="<%= @prayer.id %>" data-current-user="<%= current_user.username %>">Show Comments (<%= @prayer.comments.count %>)</button>
+<br><br>
+<div id="comments_index">
+  
+</div>
+
+<%# Old Comments Index View %>
+<!--
+<h1 class="title is-4"><u>Comments</u></h1>
+<%= render(partial: 'comments/comments_collection', collection: @prayer.all_comments, as: :comment, locals:{prayer: @prayer}) || "No comments have been posted" %>
+-->

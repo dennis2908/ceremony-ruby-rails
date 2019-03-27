@@ -1,0 +1,5 @@
+<%= form_for [group, group_comment] do |f| %>
+  <%= f.hidden_field :group_id %>
+  <%= f.text_area :content, class: "textarea", placeholder: "Add a comment" %>
+  <%= f.submit "Post comment to group", class: "button is-dark", data: { disable_with: false } %>
+<% end %>

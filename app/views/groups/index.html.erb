@@ -1,0 +1,5 @@
+<%= link_to "Create New Group", new_group_path, class: "button is-warning is-rounded", style: "float:right;" %>
+
+<h1 class="title is-2">Public Groups:</h1>
+
+<%= render(partial: 'public_groups_collection', collection: @groups, as: :group) || "No public groups to display" %>
